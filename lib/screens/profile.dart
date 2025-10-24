@@ -13,11 +13,15 @@ class ProfilePage extends StatelessWidget {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(title: Text('الملف الشخصي')),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                Text(
+                  'Profile',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 16),
                 CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
                 SizedBox(height: 16),
                 if (state.isLoggedIn) ...[
@@ -27,43 +31,43 @@ class ProfilePage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'مستخدم نشط',
+                    'Active',
                     style: TextStyle(fontSize: 16, color: Colors.green),
                   ),
                   SizedBox(height: 32),
                   Card(
                     child: ListTile(
                       leading: Icon(Icons.email),
-                      title: Text('البريد الإلكتروني'),
+                      title: Text('Email'),
                       subtitle: Text('user@test.com'),
                     ),
                   ),
                   Card(
                     child: ListTile(
                       leading: Icon(Icons.date_range),
-                      title: Text('تاريخ التسجيل'),
-                      subtitle: Text('١ يناير ٢٠٢٤'),
+                      title: Text('Date of registration'),
+                      subtitle: Text('1 January 2024'),
                     ),
                   ),
                 ] else ...[
                   Text(
-                    'غير مسجل الدخول',
+                    'Not logged in',
                     style: TextStyle(fontSize: 18, color: Colors.red),
                   ),
                   SizedBox(height: 16),
-                  Text('يرجى تسجيل الدخول لعرض الملف الشخصي'),
+                  Text('Please login to view profile'),
                 ],
                 SizedBox(height: 32),
                 if (state.isLoggedIn)
                   ElevatedButton(
                     onPressed: () {
                       context.read<AuthCubit>().logout();
-                      NavigationHelper.goToRoute(context, '/');
+                      Router.neglect(context, () => context.pop());
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                     ),
-                    child: Text('تسجيل الخروج'),
+                    child: Text('Logout'),
                   ),
               ],
             ),

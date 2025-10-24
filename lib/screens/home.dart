@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
                     Icon(Icons.check_circle, color: Colors.green, size: 64),
                     SizedBox(height: 16),
                     Text(
-                      'مرحباً ${state.userName}!',
+                      'Welcome ${state.userName}!',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -32,14 +32,14 @@ class HomePage extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'أنت مسجل الدخول الآن',
+                      'You are logged in now',
                       style: TextStyle(fontSize: 16, color: Colors.green),
                     ),
                   ] else ...[
                     Icon(Icons.person_outline, color: Colors.blue, size: 64),
                     SizedBox(height: 16),
                     Text(
-                      'مرحباً بالزائر!',
+                      'Welcome visitor!',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'يرجى تسجيل الدخول للوصول لجميع الميزات',
+                      'Please login to access all features',
                       style: TextStyle(fontSize: 16, color: Colors.grey),
                     ),
                   ],
@@ -59,23 +59,20 @@ class HomePage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () =>
                             NavigationHelper.goToRoute(context, '/'),
-                        child: Text('الرئيسية'),
+                        child: Text('Home'),
                       ),
                       ElevatedButton(
-                        onPressed: () =>
-                            NavigationHelper.goToRoute(context, '/profile'),
-                        child: Text('الملف الشخصي'),
+                        onPressed: () => context.push('/profile'),
+                        child: Text('Profile'),
                       ),
                       ElevatedButton(
-                        onPressed: () =>
-                            NavigationHelper.goToRoute(context, '/settings'),
-                        child: Text('الإعدادات'),
+                        onPressed: () => context.push('/settings'),
+                        child: Text('Settings'),
                       ),
                       if (!state.isLoggedIn)
                         ElevatedButton(
-                          onPressed: () =>
-                              NavigationHelper.goToRoute(context, '/login'),
-                          child: Text('تسجيل الدخول'),
+                          onPressed: () => context.push('/login'),
+                          child: Text('Login'),
                         ),
                       if (state.isLoggedIn)
                         ElevatedButton(
@@ -86,7 +83,7 @@ class HomePage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red,
                           ),
-                          child: Text('تسجيل الخروج'),
+                          child: Text('Logout'),
                         ),
                     ],
                   ),

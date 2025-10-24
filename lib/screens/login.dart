@@ -46,11 +46,10 @@ class _LoginPageState extends State<LoginPage> {
       listener: (context, state) {
         if (state.isLoggedIn) {
           // بعد تسجيل الدخول الناجح، ارجع للصفحة الرئيسية
-          NavigationHelper.goToRoute(context, '/');
+          Router.neglect(context, () => context.pop());
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: Text('تسجيل الدخول')),
         body: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 400),
@@ -60,14 +59,14 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'تسجيل الدخول',
+                    'Login',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 32),
                   TextField(
                     controller: _emailController,
                     decoration: InputDecoration(
-                      labelText: 'البريد الإلكتروني',
+                      labelText: 'Email',
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email),
                     ),
@@ -77,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      labelText: 'كلمة المرور',
+                      labelText: 'Password',
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.lock),
                     ),
@@ -94,18 +93,10 @@ class _LoginPageState extends State<LoginPage> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: _login,
-                          child: Text(
-                            'تسجيل الدخول',
-                            style: TextStyle(fontSize: 18),
-                          ),
+                          child: Text('Login', style: TextStyle(fontSize: 18)),
                         ),
                       );
                     },
-                  ),
-                  SizedBox(height: 16),
-                  TextButton(
-                    onPressed: () => NavigationHelper.goToRoute(context, '/'),
-                    child: Text('العودة للرئيسية'),
                   ),
                 ],
               ),
