@@ -50,7 +50,7 @@ class SettingsPage extends StatelessWidget {
                     content: Text('Flutter Middleware Task'),
                     actions: [
                       TextButton(
-                        onPressed: () => context.pop(),
+                        onPressed: () => context.go('/'),
                         child: Text('Ok'),
                       ),
                     ],

@@ -62,7 +62,7 @@ class ProfilePage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       context.read<AuthCubit>().logout();
-                      Router.neglect(context, () => context.pop());
+                      Router.neglect(context, () => context.go('/'));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,

@@ -62,16 +62,16 @@ class HomePage extends StatelessWidget {
                         child: Text('Home'),
                       ),
                       ElevatedButton(
-                        onPressed: () => context.push('/profile'),
+                        onPressed: () => context.go('/profile'),
                         child: Text('Profile'),
                       ),
                       ElevatedButton(
-                        onPressed: () => context.push('/settings'),
+                        onPressed: () => context.go('/settings'),
                         child: Text('Settings'),
                       ),
                       if (!state.isLoggedIn)
                         ElevatedButton(
-                          onPressed: () => context.push('/login'),
+                          onPressed: () => context.go('/login'),
                           child: Text('Login'),
                         ),
                       if (state.isLoggedIn)

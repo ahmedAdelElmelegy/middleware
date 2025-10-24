@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       listener: (context, state) {
         if (state.isLoggedIn) {
           // بعد تسجيل الدخول الناجح، ارجع للصفحة الرئيسية
-          Router.neglect(context, () => context.pop());
+          Router.neglect(context, () => context.go('/'));
         }
       },
       child: Scaffold(
